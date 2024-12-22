@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript and HTML Combined Tasks</title>
+    <style>
+        p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Task 1: Remove Items from Drop-down List -->
+    <h3>Task 1: Remove Items from Drop-down List</h3>
+    <select id="colorSelect1">
+        <option>Red</option>
+        <option>Green</option>
+        <option>White</option>
+        <option>Black</option>
+    </select>
+    <button onclick="removeSelectedItem()">Remove Selected Item</button>
+
+    <!-- Task 2: Change Text Color Based on Drop-down Selection -->
+    <h3>Task 2: Change Text Color</h3>
+    <select id="colorSelect2">
+        <option value="Red">Red</option>
+        <option value="Green">Green</option>
+        <option value="White">White</option>
+        <option value="Black">Black</option>
+    </select>
+    <button onclick="changeTextColor()">Change Color</button>
+    <p id="text">Sample text…</p>
+
+    <!-- Task 3: Get First and Last Name from a Form -->
+    <h3>Task 3: Get First and Last Name from a Form</h3>
+    <form id="form1">
+        First name: <input type="text" name="fname" value="David"><br>
+        Last name: <input type="text" name="lname" value="Beckham"><br>
+        <input type="button" value="Submit" onclick="getFormValues()">
+    </form>
+
+    <!-- Task 4: Display Random Image -->
+    <h3>Task 4: Display a Random Image</h3>
+    <button onclick="showRandomImage()">Show Random Image</button>
+    <br><br>
+    <img id="randomImage" width="0" height="0" alt="Random Image">
+
+    <script>
+        // Task 1: Remove Items from Drop-down List
+        function removeSelectedItem() {
+            var selectElement = document.getElementById("colorSelect1");
+            selectElement.remove(selectElement.selectedIndex);
+        }
+
+        // Task 2: Change Text Color Based on Drop-down Selection
+        function changeTextColor() {
+            var selectedColor = document.getElementById("colorSelect2").value;
+            document.getElementById("text").style.color = selectedColor;
+        }
+
+        // Task 3: Get First and Last Name from a Form
+        function getFormValues() {
+            var firstName = document.forms["form1"]["fname"].value;
+            var lastName = document.forms["form1"]["lname"].value;
+            alert("First Name: " + firstName + "\nLast Name: " + lastName);
+        }
+
+        // Task 4: Display a Random Image
+        var images = [
+            {src: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", width: "240", height: "160"},
+            {src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", width: "320", height: "195"},
+            {src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg", width: "500", height: "343"}
+        ];
+
+        function showRandomImage() {
+            var randomIndex = Math.floor(Math.random() * images.length);
+            var selectedImage = images[randomIndex];
+            var imgElement = document.getElementById("randomImage");
+            imgElement.src = selectedImage.src;
+            imgElement.width = selectedImage.width;
+            imgElement.height = selectedImage.height;
+        }
+    </script>
+</body>
+</html>
